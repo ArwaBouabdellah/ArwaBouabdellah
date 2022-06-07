@@ -1,9 +1,9 @@
-import pyttsx3 #pour le say, runAndWait fts..
-import datetime #pour le time
-import speech_recognition as sr   #pour le microphone et la recognization of sound....
-import wikipedia   #pour la recherche wikipedia.
-import smtplib    #pour l'envoi des emails
-import  webbrowser as wb  #pour la recherche en web
+import pyttsx3 
+import datetime 
+import speech_recognition as sr   
+import wikipedia   
+import smtplib   
+import  webbrowser as wb  
 
 engine = pyttsx3.init()
 
@@ -61,7 +61,6 @@ def EnvEmail(to, content):
         server= smtplib.SMTP('smtp.gmail.com', 587)   #587 le port qui ne convient à aucun type de server
         server.ehlo()  #pour nous nous identifier.
         server.starttls()  #la connexion entre le user et le server
-        #u must enable low security
         server.login('username@gmail.com', 'password')
         server.sendmail('username@gmail.com', to, content)
 
@@ -70,15 +69,12 @@ if __name__ == '__main__':
     wishme()
     while True:
         query = PrendreCommande().lower()
-        #toutes les commandes vont etre des sources miniscules.
-        #pour une plus simple recognization
-
         if 'temps' in query:
-            time_()          #va dire le time when asked
+            time_()         
         elif 'date' in query:
-            date_()          #va dire la date when asked
+            date_()          
         elif 'stop' in query:
-            quit()           #sortir de la boucle
+            quit()          
         elif 'wikipédia' in query:
             speak('Cherche en cours....')
             query= query.replace('wikipedia', '')
@@ -89,7 +85,7 @@ if __name__ == '__main__':
         elif 'envoyer un email' in query:
             try:
                 speak('Quoi le content?')
-                content= PrendreCommande()   #pour stocker le contenu
+                content= PrendreCommande()   
                 speak('qui est le destinataire? ')
 
                 receiver= input("entrer l'email du destinataire: ")
